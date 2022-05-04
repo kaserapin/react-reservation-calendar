@@ -1,0 +1,64 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.row:nth-child(even) {
+    background-color: lightgray;
+}
+
+.time-wrapper {
+    display: flex;
+}
+
+.hour::before {
+    content: '-';
+    margin: 0 5px;
+}
+
+.reservation-btn {
+    color: #CE4B09;
+    width: 100%;
+    min-width: 150px;
+    padding: 5px 0;
+    border: 1px solid #1A1A1A;
+    cursor: pointer;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: color 150ms ease-in-out;
+    font-family: "Times New Roman", serif;
+}
+
+.reservation-btn.enabled:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: var(--secondary-color);
+    z-index: -1;
+    transition: width 150ms ease-in-out;
+}
+
+.reservation-btn.enabled:hover {
+    color: var(--main-color);
+}
+
+.reservation-btn.enabled:hover:after {
+    width: 110%;
+}
+
+.reservation-btn.disabled {
+    color: var(--color-gray-1);
+    cursor: default;
+}

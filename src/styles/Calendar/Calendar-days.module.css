@@ -1,0 +1,27 @@
+.day {
+    background-color: var(--day-background-color);
+    border: 1px solid var(--color-gray-1);
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--main-color);
+}
+
+.day:hover {
+    filter: brightness(90%);
+}
+
+.day.other-month {
+    background-color: transparent;
+    cursor: default;
+}
+
+.day.other-month:hover {
+    filter: brightness(100%);
+}
+
+.day.current {
+    background-color: var(--secondary-color);
+}

@@ -1,0 +1,44 @@
+.registration-modal {
+    position: fixed;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    max-width: 450px;
+    border: 1px solid #fff;
+    z-index: 100;
+}
+
+.registration-modal.opened {
+    display: block;
+}
+
+.registration-modal .modal-header {
+    background-color: #1A1A1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.registration-modal .modal-header .close-button {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.registration-modal .modal-header .back-btn {
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+}
+
+.registration-modal .modal-content {
+    background-color: #fff;
+    color: #1A1A1A;
+    text-align: center;
+    box-sizing: border-box;
+    height: 100%;
+}

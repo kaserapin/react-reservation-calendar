@@ -1,0 +1,69 @@
+form .inner {
+    width: 60%;
+    margin: auto;
+    padding: 15px 0;
+    box-sizing: border-box;
+}
+
+form label, form input {
+    display: block;
+    margin: auto;
+}
+
+form input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+form input.error {
+    border-color: var(--color-error);
+}
+
+form label {
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+form label.error {
+    color: var(--color-error);
+}
+
+form button {
+    background-color: transparent;
+    color: var(--secondary-color);
+    padding: 5px 15px;
+    margin-top: 15px;
+    border: 1px solid var(--color-gray-1);
+    cursor: pointer;
+    font-family: "Times New Roman", serif;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 150ms ease-in-out;
+}
+
+form button:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: var(--secondary-color);
+    z-index: -1;
+    transition: width 150ms ease-in-out;
+}
+
+form button:hover {
+    color: var(--main-color);
+}
+
+form button:hover:after {
+    width: 110%;
+}

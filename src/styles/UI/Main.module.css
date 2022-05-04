@@ -1,0 +1,41 @@
+/* Variables */
+
+:root {
+    --day-background-color: #2D2D2D;
+    --background-color-1: #1A1A1A;
+    --background-color-2: #1D1D1D;
+    --main-color: #fff;
+    --secondary-color: #CE4B09;
+    --color-gray-1: #444;
+    --color-gray-2: #EEEEEE;
+    --color-error: #a31717;
+}
+
+/* Main styles */
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color-1);
+    color: var(--main-color);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    background-color: var(--background-color-2);
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}

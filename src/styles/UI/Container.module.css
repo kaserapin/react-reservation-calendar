@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px;
+}
+
+.container:last-child {
+    margin-bottom: 0;
+}
+
+.label {
+    min-width: 175px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.value {
+    color: var(--secondary-color);
+}
