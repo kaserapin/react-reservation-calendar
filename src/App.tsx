@@ -13,7 +13,15 @@ function App() {
     const [openedMonth, setOpenedMonth] = useState<number | null>(null);
     const [openedMonthInWords, setOpenedMonthInWords] = useState<string | null>(null);
     const [openedYear, setOpenedYear] = useState<number  | null>(null);
-    const [reservations, setReservations] = useState<any[]>([]);
+    const [reservations, setReservations] = useState<[{
+        date: Date,
+        reserved: boolean,
+        expired: boolean
+    }]>([{
+        date: new Date(),
+        reserved: false,
+        expired: false
+    }]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [displayedMonth, setDisplayedMonth] = useState<number>(today.getMonth());
     const [displayedYear, setDisplayedYear] = useState<number>(today.getFullYear());
