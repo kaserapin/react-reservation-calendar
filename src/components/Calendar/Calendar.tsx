@@ -1,6 +1,6 @@
 import React from 'react';
 import ControlPanel from './Control-panel/ControlPanel';
-import CalendarDays from './Calendar-days';
+import CalendarDays from './CalendarDays';
 import styles from '../../styles/Calendar/Calendar.module.css';
 
 interface CalendarProps {
@@ -8,7 +8,14 @@ interface CalendarProps {
     onLeftArrowClick: () => void;
     displayedMonth: string[number];
     displayedYear: number;
-    currentDays: any[];
+    currentDays: Array<{
+        isCurrentMonth: boolean,
+        date: Date,
+        monthNumber: number,
+        monthInWords: string,
+        dayNumber: number,
+        year: number
+    }>;
     onCalendarDayClick: (event: React.MouseEvent) => void;
 }
 

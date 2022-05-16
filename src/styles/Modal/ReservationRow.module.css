@@ -10,7 +10,7 @@
     background-color: lightgray;
 }
 
-.time-wrapper {
+.timeWrapper {
     display: flex;
 }
 
@@ -19,7 +19,7 @@
     margin: 0 5px;
 }
 
-.reservation-btn {
+.reservationBtn {
     color: #CE4B09;
     width: 100%;
     min-width: 150px;
@@ -36,7 +36,7 @@
     font-family: "Times New Roman", serif;
 }
 
-.reservation-btn.enabled:after {
+.reservationBtn.enabled:after {
     content: '';
     position: absolute;
     display: block;
@@ -50,15 +50,15 @@
     transition: width 150ms ease-in-out;
 }
 
-.reservation-btn.enabled:hover {
+.reservationBtn.enabled:hover {
     color: var(--main-color);
 }
 
-.reservation-btn.enabled:hover:after {
+.reservationBtn.enabled:hover:after {
     width: 110%;
 }
 
-.reservation-btn.disabled {
+.reservationBtn.disabled {
     color: var(--color-gray-1);
     cursor: default;
 }

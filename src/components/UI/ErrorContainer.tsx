@@ -7,7 +7,7 @@ type ErrorContainerProps = {
 
 const ErrorContainer: React.FC<ErrorContainerProps> = (props) => {
     return (
-        <div className={styles['error-container']}>{props.message}</div>
+        <div className={styles.errorContainer}>{props.message}</div>
     );
 }
 

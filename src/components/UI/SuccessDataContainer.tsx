@@ -6,7 +6,7 @@ interface ContainerProps {
     data: string;
 }
 
-const Container: React.FC<ContainerProps> = (props) => {
+const SuccessDataContainer: React.FC<ContainerProps> = (props) => {
     return (
         <div className={styles.container}>
             <span className={styles.label}>{props.label}</span>
@@ -15,4 +15,4 @@ const Container: React.FC<ContainerProps> = (props) => {
     );
 }
 
-export default Container;
+export default SuccessDataContainer;

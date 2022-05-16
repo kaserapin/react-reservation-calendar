@@ -1,6 +1,8 @@
 import React from "react";
+import FormInput from "../UI/FormInput";
 import styles from '../../styles/Modal/ModalForm.module.css';
 import errorStyles from '../../styles/UI/Error.module.css';
+import ErrorMessage from "../UI/ErrorMessage";
 
 interface ModalFormProps {
     isFirstNameValid: boolean;
@@ -20,12 +22,22 @@ const ModalForm: React.FC<ModalFormProps> = props => {
     return (
         <form onSubmit={props.onFormSubmit}>
             <div className={styles.inner}>
-                <label className={invalidFirstName ? `${styles.error}` : ''} htmlFor="firstName">First name</label>
-                <input className={invalidFirstName ? `${styles.error}` : ''} value={props.firstName} onChange={props.onFirstNameChange} id="firstName" type="text"/>
-                {invalidFirstName && <p className={errorStyles['error-message']}>Incorrect input value</p>}
-                <label className={invalidLastName ? `${styles.error}` : ''} htmlFor="lastName">Last name</label>
-                <input className={invalidLastName ? `${styles.error}` : ''} value={props.lastName} onChange={props.onLastNameChange} id="lastName" type="text"/>
-                {invalidLastName && <p className={errorStyles['error-message']}>Incorrect input value</p>}
+                <FormInput labelStyles={invalidFirstName ? `${styles.error}` : ''}
+                           inputStyles={invalidFirstName ? `${styles.error}` : ''}
+                           labelFor="firstName"
+                           inputType="text"
+                           onChange={props.onFirstNameChange}
+                           inputId="firstName"
+                           inputValue={props.firstName}>First Name</FormInput>
+                {invalidFirstName && <ErrorMessage errorMessageStyles={errorStyles.errorMessage}>Incorrect input value</ErrorMessage>}
+                <FormInput labelStyles={invalidLastName ? `${styles.error}` : ''}
+                           inputStyles={invalidLastName ? `${styles.error}` : ''}
+                           labelFor="lastName"
+                           inputType="text"
+                           onChange={props.onLastNameChange}
+                           inputId="lastName"
+                           inputValue={props.lastName}>Last name</FormInput>
+                {invalidLastName && <ErrorMessage errorMessageStyles={errorStyles.errorMessage}>Incorrect input value</ErrorMessage>}
                 <button type="submit">Submit</button>
             </div>
         </form>

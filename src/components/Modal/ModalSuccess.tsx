@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../UI/Container";
+import SuccessDataContainer from "../UI/SuccessDataContainer";
 import styles from '../../styles/Modal/ModalSuccess.module.css';
 
 interface ModalSuccessProps {
@@ -18,10 +18,10 @@ const ModalSuccess: React.FC<ModalSuccessProps> = props => {
     const hour = new Date(successDate).getHours();
 
     return (
-        <div className={styles['reservation-details']}>
-            <Container label={"Name:"} data={props.successData.firstName} />
-            <Container label={"Last name:"} data={props.successData.lastName} />
-            <Container label={"Reservation date:"} data={`${year} ${month} ${day} - ${hour}:00`} />
+        <div className={styles.reservationDetails}>
+            <SuccessDataContainer label={"Name:"} data={props.successData.firstName} />
+            <SuccessDataContainer label={"Last name:"} data={props.successData.lastName} />
+            <SuccessDataContainer label={"Reservation date:"} data={`${year} ${month} ${day} - ${hour}:00`} />
         </div>
     );
 }

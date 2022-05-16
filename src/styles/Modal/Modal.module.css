@@ -1,4 +1,4 @@
-.registration-modal {
+.registrationModal {
     position: fixed;
     top: 150px;
     left: 50%;
@@ -9,11 +9,11 @@
     z-index: 100;
 }
 
-.registration-modal.opened {
+.registrationModal.opened {
     display: block;
 }
 
-.registration-modal .modal-header {
+.registrationModal .modalHeader {
     background-color: #1A1A1A;
     display: flex;
     align-items: center;
@@ -23,19 +23,19 @@
     box-sizing: border-box;
 }
 
-.registration-modal .modal-header .close-button {
+.registrationModal .modalHeader .closeButton {
     position: absolute;
     right: 10px;
     cursor: pointer;
 }
 
-.registration-modal .modal-header .back-btn {
+.registrationModal .modalHeader .backBtn {
     cursor: pointer;
     position: absolute;
     left: 20px;
 }
 
-.registration-modal .modal-content {
+.registrationModal .modalContent {
     background-color: #fff;
     color: #1A1A1A;
     text-align: center;

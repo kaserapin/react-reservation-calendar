@@ -15,12 +15,12 @@ function App() {
     const [openedYear, setOpenedYear] = useState<number  | null>(null);
     const [reservations, setReservations] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    let [displayedMonth, setDisplayedMonth] = useState<number>(today.getMonth());
-    let [displayedYear, setDisplayedYear] = useState<number>(today.getFullYear());
+    const [displayedMonth, setDisplayedMonth] = useState<number>(today.getMonth());
+    const [displayedYear, setDisplayedYear] = useState<number>(today.getFullYear());
 
-    let firstDayOfMonth = new Date(today.getFullYear(), displayedMonth, -1);
-    let weekdayOfFirstDay = firstDayOfMonth.getDay() - 1;
-    let currentDays = [];
+    const firstDayOfMonth = new Date(today.getFullYear(), displayedMonth, -1);
+    const weekdayOfFirstDay = firstDayOfMonth.getDay() - 1;
+    const currentDays = [];
     const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     for (let day = 0; day < 42; day++) {
@@ -89,24 +89,24 @@ function App() {
             });
     }
 
-    const hideModal = () => {
+    const hideModal = (): void => {
         setIsModalOpen(false);
     }
 
-    const showPreviousMonth = () => {
-        displayedYear = (displayedMonth === 0) ? displayedYear - 1 : displayedYear;
-        displayedMonth = (displayedMonth === 0) ? 11 : displayedMonth - 1;
+    const showPreviousMonth = (): void => {
+        const year = (displayedMonth === 0) ? displayedYear - 1 : displayedYear;
+        const month = (displayedMonth === 0) ? 11 : displayedMonth - 1;
 
-        setDisplayedMonth(displayedMonth)
-        setDisplayedYear(displayedYear)
+        setDisplayedMonth(month);
+        setDisplayedYear(year);
     }
 
-    const showNextMonth = () => {
-        displayedYear = (displayedMonth === 11) ? displayedYear + 1 : displayedYear;
-        displayedMonth = (displayedMonth + 1) % 12;
+    const showNextMonth = (): void => {
+        const year = (displayedMonth === 11) ? displayedYear + 1 : displayedYear;
+        const month = (displayedMonth + 1) % 12;
 
-        setDisplayedMonth(displayedMonth)
-        setDisplayedYear(displayedYear)
+        setDisplayedMonth(month);
+        setDisplayedYear(year);
     }
 
     return (

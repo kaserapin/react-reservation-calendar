@@ -14,14 +14,14 @@ interface  ReservationRowProps {
 const ReservationRow: React.FC<ReservationRowProps> = (props) => {
     return (
         <div className={styles.row}>
-            <div className={styles['time-wrapper']}>
+            <div className={styles.timeWrapper}>
                 <div>{props.openedDay} {props.openedMonth} {props.openedYear}</div>
                 <div className={styles.hour} data-hour={props.hour}>{props.hour}:00</div>
             </div>
             <div className="actions-wrapper">
                 <button className={props.isDisabled ?
-                    `${styles['reservation-btn']} ${styles.disabled}` :
-                    `${styles['reservation-btn']} ${styles.enabled}`}
+                    `${styles.reservationBtn} ${styles.disabled}` :
+                    `${styles.reservationBtn} ${styles.enabled}`}
                         onClick={props.onReservationClick}
                         disabled={props.isDisabled}>
                     {props.buttonText}

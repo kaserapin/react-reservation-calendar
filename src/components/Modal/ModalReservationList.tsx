@@ -2,15 +2,21 @@ import React from "react";
 import ReservationRow from "./ReservationRow";
 
 interface ModalReservationListProps {
-    reservations: any[]
+    reservations: Array<{
+        date: Date,
+        reserved: boolean,
+        expired: boolean
+    }>
     onSelectClick: (event: React.MouseEvent) => void;
     openedDay: number | null;
     openedMonth: string | null;
     openedYear: number | null;
 }
 
-const ModalReservationList: Function = (props: ModalReservationListProps) => {
-    return (props.reservations.map(reservation => {
+const ModalReservationList: React.FC<ModalReservationListProps> = (props) => {
+    const { reservations } = props;
+
+    const reservationRow = reservations.map(reservation => {
         const formattedDate = new Date(reservation.date);
         const isReserved = reservation.reserved;
         const isExpired = reservation.expired;
@@ -37,7 +43,13 @@ const ModalReservationList: Function = (props: ModalReservationListProps) => {
                 buttonText={buttonText}
                 onReservationClick={props.onSelectClick}/>
         );
-    }))
+    })
+
+    return (
+        <React.Fragment>
+            {reservationRow}
+        </React.Fragment>
+    );
 }
 
 export default ModalReservationList;

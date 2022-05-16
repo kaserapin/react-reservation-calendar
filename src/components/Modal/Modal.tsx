@@ -13,20 +13,24 @@ interface ModalProps  {
     openedMonthInWords: string | null;
     openedMonth: number | null;
     openedYear: number | null;
-    reservations: any[];
+    reservations: Array<{
+        date: Date,
+        reserved: boolean,
+        expired: boolean
+    }>;
     isLoading: boolean
 }
 
 const Modal: React.FC<ModalProps> = (props) => {
 
-    let [modalStep, setModalStep] = useState(1);
+    let [modalStep, setModalStep] = useState<number>(1);
     const [isValidFirstName, setIsValidFirstName] = useState<boolean>(false);
     const [isValidLastName, setIsValidLastName] = useState<boolean>(false);
     const [isFormTouched, setIsFormTouched] = useState<boolean>(false);
     const [selectedHour, setSelectedHour] = useState<any>(null);
     const [errorMessage, setErrorMessage] = useState<string>('');
-    const [isError, setIsError] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [firstNameInput, setFirstNameInput] = useState<string>('');
     const [lastNameInput, setLastNameInput] = useState<string>('');
     const [successData, setSuccessData] = useState<{
@@ -39,7 +43,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         date: ''
     })
 
-    const increaseModalStep = () => {
+    const increaseModalStep = (): void => {
         setModalStep(modalStep += 1);
     }
 
@@ -111,7 +115,7 @@ const Modal: React.FC<ModalProps> = (props) => {
             .catch(error => console.log(error));
     }
 
-    const decreaseModalStep = () => {
+    const decreaseModalStep = (): void => {
         setModalStep(modalStep -= 1);
         setIsError(false);
         setFirstNameInput('');
@@ -119,54 +123,65 @@ const Modal: React.FC<ModalProps> = (props) => {
     }
 
     const renderModalContent = () => {
-        if (modalStep === 1) {
-            return (
-                <React.Fragment>
-                    {props.isLoading ? <Loader /> : <ModalReservationList onSelectClick={onSelectClick}
-                                                                    openedDay={props.openedDay}
-                                                                    openedMonth={props.openedMonthInWords}
-                                                                    openedYear={props.openedYear}
-                                                                    reservations={props.reservations}/>}
+        switch (modalStep) {
+            case 1:
+                return (
+                    <React.Fragment>
+                        {props.isLoading ? <Loader /> : <ModalReservationList onSelectClick={onSelectClick}
+                                                                              openedDay={props.openedDay}
+                                                                              openedMonth={props.openedMonthInWords}
+                                                                              openedYear={props.openedYear}
+                                                                              reservations={props.reservations}/>}
 
-                </React.Fragment>);
-
-        } else if (modalStep === 2) {
-            return (
-                <React.Fragment>
-                    {isError && <ErrorContainer message={errorMessage}/>}
-                    {isLoading ?
-                        <Loader /> :
-                        <ModalForm onFormSubmit={formSubmit} firstName={firstNameInput}
-                               lastName={lastNameInput} isFirstNameValid={isValidFirstName}
-                               onFirstNameChange={onFirstNameChange} onLastNameChange={onLastNameChange}
-                               isLastNameValid={isValidLastName} isFormTouched={isFormTouched}/>}
-                </React.Fragment>
-            );
-
-        } else {
-            return (
-                <React.Fragment>
-                    { isLoading ? <Loader /> : <ModalSuccess successData={successData}/>}
-                </React.Fragment>
-            )
+                    </React.Fragment>);
+            case 2:
+                return (
+                    <React.Fragment>
+                        {isError && <ErrorContainer message={errorMessage}/>}
+                        {isLoading ?
+                            <Loader /> :
+                            <ModalForm onFormSubmit={formSubmit} firstName={firstNameInput}
+                                       lastName={lastNameInput} isFirstNameValid={isValidFirstName}
+                                       onFirstNameChange={onFirstNameChange} onLastNameChange={onLastNameChange}
+                                       isLastNameValid={isValidLastName} isFormTouched={isFormTouched}/>}
+                    </React.Fragment>
+                );
+            case 3:
+                return (
+                    <React.Fragment>
+                        { isLoading ? <Loader /> : <ModalSuccess successData={successData}/>}
+                    </React.Fragment>
+                )
         }
     }
 
+    const headerText = () => {
+        switch (modalStep) {
+            case 1:
+                return "Select reservation time";
+            case 2:
+                return `${props.openedYear} ${props.openedMonthInWords} ${props.openedDay} ${selectedHour}:00`;
+            case 3:
+                return "Reservation succeeded";
+        }
+
+    }
+
     return (
-        <div className={props.isModalOpen ? `${styles['registration-modal']} ${styles.opened}` : `${styles['registration-modal']}`}>
-            <div className={styles['modal-header']}>
+        <div className={props.isModalOpen ? `${styles.registrationModal} ${styles.opened}` : `${styles.registrationModal}`}>
+            <div className={styles.modalHeader}>
                 {modalStep === 2 &&
-                    <div className={`material-icons ${styles['back-btn']}`} onClick={decreaseModalStep}>keyboard_arrow_left</div>}
+                    <div className={`material-icons ${styles.backBtn}`} onClick={decreaseModalStep}>keyboard_arrow_left</div>}
                 <div className="title">
-                    {modalStep === 1 && "Select reservation time"}
-                    {modalStep === 2 && `${props.openedYear} ${props.openedMonthInWords} ${props.openedDay} ${selectedHour}:00`}
-                    {modalStep === 3 && "Reservation succeeded"}
+                    {headerText()}
                 </div>
-                <div className={styles['close-button']} onClick={props.onCloseModalClick}>
+                <div className={styles.closeButton} onClick={props.onCloseModalClick}>
                     <span className="material-icons">close</span>
                 </div>
             </div>
-            <div className={styles['modal-content']}>{renderModalContent()}</div>
+            <div className={styles.modalContent}>
+                {renderModalContent()}
+            </div>
         </div>
     );
 }
