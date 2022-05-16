@@ -18,7 +18,7 @@ const CalendarDays: React.FC<CalendarDaysProps> = (props) => {
 
     const calendarDayButton = currentDays.map((day) => {
         const currentDayStyle = day.dayNumber === new Date().getDate() && day.monthNumber === new Date().getMonth() && day.year === new Date().getFullYear() ? ` ${styles.current}` : "";
-        const monthStyles = day.isCurrentMonth ? "" : ` ${styles['other-month']}`;
+        const monthStyles = day.isCurrentMonth ? "" : ` ${styles.otherMonth}`;
 
         return (
             <button key={`${day.year}-${day.monthNumber}-${day.dayNumber}`}

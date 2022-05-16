@@ -32,7 +32,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
             <div className={styles.calendar}>
                 {
                     weekdays.map((weekday) => {
-                        return <div key={`${weekday}`} className={styles['week-day-name']}><p>{weekday}</p></div>
+                        return <div key={`${weekday}`} className={styles.weekDayName}><p>{weekday}</p></div>
                     })
                 }
                 <CalendarDays currentDays={props.currentDays}

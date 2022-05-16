@@ -13,12 +13,12 @@
     filter: brightness(90%);
 }
 
-.day.other-month {
+.day.otherMonth {
     background-color: transparent;
     cursor: default;
 }
 
-.day.other-month:hover {
+.day.otherMonth:hover {
     filter: brightness(100%);
 }
 

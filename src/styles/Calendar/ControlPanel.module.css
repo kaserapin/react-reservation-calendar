@@ -1,4 +1,4 @@
-.calendar-control-panel {
+.calendarControlPanel {
     display: flex;
     max-width: 800px;
     margin: 0 auto 20px;
@@ -6,11 +6,11 @@
     justify-content: space-between;
 }
 
-.arrow-left, .arrow-right {
+.arrowLeft, .arrowRight {
     color: var(--secondary-color);
 }
 
-.arrow-left span, .arrow-right span {
+.arrowLeft span, .arrowRight span {
     line-height: 1;
     border: 1px solid var(--color-gray-1);
     padding: 0 5px;

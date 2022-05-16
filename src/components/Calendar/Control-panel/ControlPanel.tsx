@@ -10,8 +10,8 @@ interface ControlPanelProps {
 
 const ControlPanel: React.FC<ControlPanelProps> = (props) => {
     return (
-        <div className={styles['calendar-control-panel']}>
-            <div className={styles['arrow-left']}>
+        <div className={styles.calendarControlPanel}>
+            <div className={styles.arrowLeft}>
                 <span className="material-icons" onClick={props.onLeftArrowClick}>keyboard_arrow_left</span>
             </div>
             <div className="date-container">
@@ -19,7 +19,7 @@ const ControlPanel: React.FC<ControlPanelProps> = (props) => {
                 <span>{' '}</span>
                 <span className="year">{props.displayedYear}</span>
             </div>
-            <div className={styles['arrow-right']}>
+            <div className={styles.arrowRight}>
                 <span className="material-icons" onClick={props.onRightArrowClick}>keyboard_arrow_right</span>
             </div>
         </div>
